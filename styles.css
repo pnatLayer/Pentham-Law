@@ -1,0 +1,194 @@
+/* --- Root Config and Main Variables --- */
+:root {
+    --brand-dark: #1e243a;
+    --brand-darker: #161b2c;
+    --brand-primary: #b45309;
+    --dark-bg: #0f172a; /* พื้นหลังโหมดมืดแบบพรีเมียม */
+    --dark-card: #1e293b;
+    --line-color: #06C755;
+    --facebook-color: #1877F2;
+    --youtube-color: #FF0000;
+    --transition-speed: 0.3s;
+}
+
+/* --- Global Styles --- */
+body {
+    font-family: 'Sarabun', sans-serif;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+@media (max-width: 640px) {
+    body { font-size: 14px; }
+}
+
+.font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- Tailwind Dark Mode Helper --- */
+.dark .dark\:bg-darkBg { background-color: var(--dark-bg) !important; }
+.dark .dark\:bg-brand-dark { background-color: var(--brand-dark) !important; }
+
+/* --- Responsive Typography --- */
+.fluid-h1 {
+    font-size: clamp(1.4rem, 4.5vw + 0.5rem, 3.75rem);
+    line-height: 1.2;
+}
+.fluid-h2 {
+    font-size: clamp(1.3rem, 3vw + 0.8rem, 2.5rem);
+    line-height: 1.3;
+}
+
+/* --- Navigation & Links --- */
+.nav-link {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    transition: all var(--transition-speed);
+}
+
+.nav-link:hover {
+    background-color: rgba(30, 36, 58, 0.05);
+}
+
+.dark .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Hero Section Background --- */
+.hero-gradient {
+    background-image: linear-gradient(rgba(22, 27, 44, 0.75), rgba(22, 27, 44, 0.85)), 
+                      url('Image/background1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- เร็วๆนี้ --- */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: rgba(180, 83, 9, 0.1); /* สีทองจางๆ */
+    border: 1px solid var(--brand-primary);
+    border-radius: 99px;
+    font-weight: bold;
+    color: var(--brand-primary);
+}
+/* --- เร็วๆนี้ --- */
+
+
+.dark .hero-gradient {
+    background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                      url('Image/background1.jpg');
+}
+
+/* --- Service Cards --- */
+.service-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+.dark .service-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(145deg, #1e243a, #161b2c);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
+    border-color: rgba(180, 83, 9, 0.2);
+}
+
+.dark .service-card:hover {
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.4);
+    border-color: rgba(180, 83, 9, 0.4);
+}
+
+.card-watermark {
+    position: absolute;
+    bottom: -20px;
+    right: -10px;
+    font-size: 12rem;
+    font-weight: 900;
+    color: rgba(0, 0, 0, 0.02);
+    user-select: none;
+    z-index: -1;
+    transition: all 0.5s ease;
+}
+
+.dark .card-watermark {
+    color: rgba(255, 255, 255, 0.02);
+}
+
+/* --- Mobile Menu Control --- */
+#mobile-menu {
+    transition: all 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#mobile-menu.active {
+    max-height: 600px;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* --- Modal View Transitions --- */
+.modal-enter {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+}
+
+.modal-enter-active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.view-hidden {
+    display: none !important;
+}
+
+/* --- Toast & Utility --- */
+#copy-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #06C755;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 99px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 200;
+    display: none;
+    box-shadow: 0 10px 25px rgba(6, 199, 85, 0.3);
+    border: 2px solid white;
+}
+
+.theme-btn-shadow {
+    box-shadow: 0 2px 8px -2px rgba(0,0,0,0.1);
+}
+
+.dark .theme-btn-shadow {
+    box-shadow: 0 4px 12px -2px rgba(0,0,0,0.5);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    background: #000;
+}
